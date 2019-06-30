@@ -12,8 +12,14 @@ $(BIN):
 $(BUILD):
 	mkdir -p $@
 
+$(BIN)/example6: $(BUILD)/example6.yy.c $(BUILD)/example6.tab.c
+	cc -Wall -I $(BUILD) -o $@ $^ -lfl
+
+$(BIN)/example5: $(BUILD)/example5.yy.c $(BUILD)/example5.tab.c
+	cc -Wall -I $(BUILD) -o $@ $^ -lfl
+
 $(BIN)/example4: $(BUILD)/example4.yy.c $(BUILD)/example4.tab.c
-	cc -Wall -I $(BUILD) -o $@ $^
+	cc -Wall -I $(BUILD) -o $@ $^ -lfl
 
 $(BIN)/%: $(BUILD)/%.yy.c
 	cc -Wall $< -o $@ -ll
