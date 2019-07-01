@@ -13,7 +13,7 @@ $(BUILD):
 	mkdir -p $@
 
 $(BIN)/example6: $(BUILD)/example6.yy.c $(BUILD)/example6.tab.c
-	cc -Wall -I $(BUILD) -o $@ $^ -lfl
+	cc -Wall -I src -I $(BUILD) -o $@ $^ src/example6.c -lfl
 
 $(BIN)/example5: $(BUILD)/example5.yy.c $(BUILD)/example5.tab.c
 	cc -Wall -I $(BUILD) -o $@ $^ -lfl

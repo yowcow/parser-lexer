@@ -1,0 +1,13 @@
+person "John" {
+    age 23;
+    gender male;
+};
+
+person "Ann" {
+    age 34;
+    gender female;
+};
+
+person "Foo" { gender female; };person "Bar" { age 234; };
+person "Hoge" { age 12; gender female; };
+person "Fuga" { gender male; age 234; };

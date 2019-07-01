@@ -1,22 +1,20 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+#include "example6.h"
 
-int yyparse();
-int yylex();
-
-void yyerror(const char *str)
-{
-    fprintf(stderr, "error: %s\n", str);
-}
+extern int yylex();
+extern int yywrap();
+extern void yyerror(const char *str);
 
 int yywrap()
 {
     return 1;
 }
 
-int main()
+void yyerror(const char *str)
 {
-    return yyparse();
+    fprintf(stderr, "error: %s\n", str);
 }
 
 /**
@@ -48,7 +46,17 @@ commands:
     ;
 
 command:
-    PERSONTOK quoted_string person_block { printf("\tGot name: %s\n", $2); }
+    PERSONTOK quoted_string person_block {
+        p->name = $2;
+
+        int idx = count;
+        count++;
+
+        ppl = realloc(ppl, sizeof(Person**) * count);
+        ppl[idx] = p;
+
+        p = malloc(sizeof(Person*));
+    }
     ;
 
 quoted_string:
@@ -64,7 +72,7 @@ statements:
     ;
 
 statement:
-    AGETOK NUM { printf("\tGot age: %d\n", $2); }
-    | GENDERTOK STR { printf("\tGot gender: %s\n", $2); }
+    AGETOK NUM { p->age = $2; }
+    | GENDERTOK STR { p->gender = $2; }
     ;
 %%
