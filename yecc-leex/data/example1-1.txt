@@ -1,0 +1,15 @@
+( hoge ),
+( fuga )
+
+,(
+    foo, bar, buz
+)
+
+,(hoge),
+
+(1, 2, 3),
+("hello", "world"),
+(
+    Hello,
+    World
+)
