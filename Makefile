@@ -12,22 +12,24 @@ $(BIN):
 $(BUILD):
 	mkdir -p $@
 
-$(BIN)/example6: $(BUILD)/example6.yy.c $(BUILD)/example6.tab.c
-	cc -Wall -I src -I $(BUILD) -o $@ $^ src/example6.c -lfl
+$(BIN)/%: $(BUILD)/%.yy.c $(BUILD)/%.tab.c
+	mkdir -p $(dir $@)
+	cc -Wall -I src -I $(BUILD) -o $@ $^ -lfl
 
-$(BIN)/example5: $(BUILD)/example5.yy.c $(BUILD)/example5.tab.c
-	cc -Wall -I $(BUILD) -o $@ $^ -lfl
-
-$(BIN)/example4: $(BUILD)/example4.yy.c $(BUILD)/example4.tab.c
-	cc -Wall -I $(BUILD) -o $@ $^ -lfl
-
-$(BIN)/%: $(BUILD)/%.yy.c
-	cc -Wall $< -o $@ -ll
+# No yacc for these
+$(BUILD)/example1.tab.c:
+	touch $@
+$(BUILD)/example2.tab.c:
+	touch $@
+$(BUILD)/example3.tab.c:
+	touch $@
 
 $(BUILD)/%.tab.c: src/%.y
+	mkdir -p $(dir $@)
 	yacc -b $(dir $@)$* -d $<
 
 $(BUILD)/%.yy.c: src/%.l
+	mkdir -p $(dir $@)
 	lex -o $@ $<
 
 clean:
