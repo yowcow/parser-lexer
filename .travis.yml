@@ -4,7 +4,7 @@ jobs:
       otp_release:
         - '22.0'
       before_script:
-        - make clean
+        - make -C yecc-leex clean
       script:
-        - make all
-        - make test
+        - make -C yecc-leex all
+        - make -C yecc-leex test
