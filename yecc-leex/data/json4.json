@@ -1,0 +1,16 @@
+{
+  "hoge": 123,
+  "fuga": 234,
+  "foo": {},
+  "bar": [],
+  "buz": null,
+  "a": {
+    "name": "Hoge Fuga",
+    "age": 999,
+    "keywords": [
+      "foo",
+      {"value": "bar"},
+      ["buz"]
+    ]
+  }
+}
