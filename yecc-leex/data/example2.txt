@@ -1,0 +1,12 @@
+123 -234
+
+345
+
+1.0	-1.1E-2	1.23e+3
+
+""''""''
+
+" 'hello world' "
+' "HELLO WORLD" '
+
+q{Perl-like quoted string!}
