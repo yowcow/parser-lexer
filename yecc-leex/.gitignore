@@ -1,3 +1,5 @@
 /_build
 /src/*_parser.erl
 /src/*_lexer.erl
+
+rebar3.crashdump
