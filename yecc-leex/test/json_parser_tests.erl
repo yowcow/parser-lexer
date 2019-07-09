@@ -27,7 +27,7 @@ parse_test_() ->
         {
             "string",
             "data/json2.json",
-            "hoge"
+            "ho\"ge\""
         },
         {
             "array of integers",
@@ -57,7 +57,7 @@ parse_test_() ->
     ],
     F = fun({Name, File, Expected}) ->
         {ok, Binary} = file:read_file(File),
-        {_, Tokens, _} = erl_scan:string(binary_to_list(Binary)),
+        {_, Tokens, _} = json_lexer:string(binary_to_list(Binary)),
         {ok, Actual} = json_parser:parse(Tokens),
         {Name, ?_assertEqual(Expected, Actual)}
     end,
